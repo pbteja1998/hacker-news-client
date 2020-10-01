@@ -11,3 +11,6 @@ export const timeOffset = (unixTimestamp: number) =>
 
 export const dateTimeString = (unixTimestamp: number) =>
   new Date(unixTimestamp * 1000).toISOString().slice(0, 10)
+
+export const toTitleCase = (title: string) =>
+  title[0].toUpperCase() + title.slice(1)

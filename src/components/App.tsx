@@ -1,6 +1,7 @@
 import { ReactNode, useState } from 'react'
 import Link from 'next/link'
-import { classNames } from '../utils'
+import Head from 'next/head'
+import { classNames, toTitleCase } from '../utils'
 import { useRouter } from 'next/dist/client/router'
 
 export default function App({ children }: { children: ReactNode }) {
@@ -8,6 +9,15 @@ export default function App({ children }: { children: ReactNode }) {
   const router = useRouter()
   return (
     <>
+      <Head>
+        <title>
+          Hacker News{' '}
+          {router.pathname !== '/'
+            ? ` | ${toTitleCase(router.pathname.slice(1))}`
+            : ''}
+        </title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
       <div className='min-h-screen bg-white'>
         <nav className='bg-white border-b border-gray-200'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
