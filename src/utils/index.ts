@@ -14,3 +14,5 @@ export const dateTimeString = (unixTimestamp: number) =>
 
 export const toTitleCase = (title: string) =>
   title[0].toUpperCase() + title.slice(1)
+
+export const getDomain = (url: string) => url.split('/')[2]

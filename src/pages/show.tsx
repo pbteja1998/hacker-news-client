@@ -1,3 +1,5 @@
+import { StoriesList } from '../components'
+
 export default function ShowStories() {
-  return <p>Show Stories</p>
+  return <StoriesList urlKey='showstories' />
 }

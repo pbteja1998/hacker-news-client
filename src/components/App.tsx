@@ -7,6 +7,7 @@ import { useRouter } from 'next/dist/client/router'
 export default function App({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
+  const path = router.pathname.slice(1)
   return (
     <>
       <Head>
@@ -236,13 +237,13 @@ export default function App({ children }: { children: ReactNode }) {
           <header>
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
               <h1 className='text-3xl font-bold leading-tight text-gray-900'>
-                Dashboard
+                {toTitleCase(path || 'Top')} Stories
               </h1>
             </div>
           </header>
           <main>
             <div className='max-w-7xl mx-auto sm:px-6 lg:px-8'>
-              <div className='px-4 py-8 sm:px-0'>
+              <div className='px-4 pb-8 sm:px-0'>
                 <div className='border-4 border-dashed border-transparent rounded-lg h-96'>
                   {children}
                 </div>

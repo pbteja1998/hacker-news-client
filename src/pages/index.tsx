@@ -1,9 +1,5 @@
-import { App } from '../components'
+import { StoriesList } from '../components'
 
 export default function TopStories() {
-  return (
-    <>
-      <p>Top Stories</p>
-    </>
-  )
+  return <StoriesList urlKey='topstories' />
 }

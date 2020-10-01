@@ -1,3 +1,5 @@
+import { StoriesList } from '../components'
+
 export default function AskStories() {
-  return <p>Ask Stories</p>
+  return <StoriesList urlKey='askstories' />
 }

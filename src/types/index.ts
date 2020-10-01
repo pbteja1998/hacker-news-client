@@ -38,6 +38,7 @@ export interface Story extends Base {
   title: string
   url: string
   type: 'story'
+  text: string
 }
 
 export interface Comment extends Base {
@@ -78,4 +79,9 @@ export interface User {
   created: number
   karma: number
   submitted: number[]
+}
+
+export enum StoryType {
+  ASK,
+  SHOW,
 }
