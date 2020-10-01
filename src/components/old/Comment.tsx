@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 
-export default function Comment({ commentId }: { commentId: number }) {
+export default function OldComment({ commentId }: { commentId: number }) {
   const { isLoading, error, data } = useQuery(`comment-${commentId}-data`, () =>
     fetch(
       `https://hacker-news.firebaseio.com/v0/item/${commentId}.json`

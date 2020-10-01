@@ -1,3 +1,9 @@
-export default function Home() {
-  return <p>Home</p>
+import { App } from '../components'
+
+export default function TopStories() {
+  return (
+    <>
+      <p>Top Stories</p>
+    </>
+  )
 }

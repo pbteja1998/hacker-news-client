@@ -6,7 +6,7 @@ type Props = {
   storyId: number
 }
 
-export default function Post({ storyId }: Props) {
+export default function OldPostAlt({ storyId }: Props) {
   const { isLoading, error, data } = useQuery(`story-${storyId}-data`, () =>
     fetch(
       `https://hacker-news.firebaseio.com/v0/item/${storyId}.json`

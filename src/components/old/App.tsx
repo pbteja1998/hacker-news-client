@@ -12,7 +12,7 @@ import Toggle from './Toggle'
 
 const queryCache = new QueryCache()
 
-export default function App({
+export default function OldApp({
   children,
   on,
   setOn,

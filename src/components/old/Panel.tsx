@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useQuery } from 'react-query'
 import Comment from './Comment'
 
-export default function Panel({ storyId }: { storyId: number }) {
+export default function OldPanel({ storyId }: { storyId: number }) {
   const [isOpen, setIsOpen] = useState(true)
   const { isLoading, error, data: story } = useQuery(
     `story-${storyId}-data`,

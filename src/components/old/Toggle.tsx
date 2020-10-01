@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import { classNames } from '../../utils'
 
-export default function Toggle({
+export default function OldToggle({
   on,
   setOn,
 }: {
