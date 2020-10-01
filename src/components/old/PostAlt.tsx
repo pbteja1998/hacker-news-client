@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
-import { Story } from '../types'
-import { dateTimeString, timeOffset } from '../utils'
+import { Story } from '../../types'
+import { dateTimeString, timeOffset } from '../../utils'
 
 type Props = {
   storyId: number

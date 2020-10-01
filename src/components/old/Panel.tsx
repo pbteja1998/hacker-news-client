@@ -1,5 +1,5 @@
 import { Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { useQuery } from 'react-query'
 import Comment from './Comment'
 

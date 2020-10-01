@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useState } from 'react'
-import { classNames } from '../utils'
+import { classNames } from '../../utils'
 
 export default function Toggle({
   on,

@@ -1,6 +1,6 @@
 import { Transition } from '@headlessui/react'
 import { ReactNode, useState } from 'react'
-import { classNames } from '../utils'
+import { classNames } from '../../utils'
 import {
   useQuery,
   useMutation,
