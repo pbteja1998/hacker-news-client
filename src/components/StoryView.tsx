@@ -34,7 +34,7 @@ export default function StoryView({ storyId }: { storyId: number }) {
           <Link
             href={
               storyType === StoryType.JOB
-                ? '/job'
+                ? '/jobs'
                 : StoryType.SHOW
                 ? '/show'
                 : '/ask'
@@ -43,7 +43,7 @@ export default function StoryView({ storyId }: { storyId: number }) {
             <a className='inline-block'>
               <span className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800'>
                 {storyType === StoryType.JOB
-                  ? 'Job HN'
+                  ? 'Jobs HN'
                   : StoryType.SHOW
                   ? 'Show HN'
                   : 'Ask HN'}
@@ -84,25 +84,28 @@ export default function StoryView({ storyId }: { storyId: number }) {
           </div>
         </div>
         <div className='flex items-center mt-1'>
-          <div className='flex items-center'>
-            <svg
-              className='w-5 h-5'
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z'
-              />
-            </svg>
-            <a href='#' className='text-sm ml-1'>
-              {story.descendants ?? 0} Comments
-            </a>
-          </div>
+          {storyType !== StoryType.JOB && (
+            <div className='flex items-center'>
+              <svg
+                className='w-5 h-5'
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth={2}
+                  d='M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z'
+                />
+              </svg>
+              <a href='#' className='text-sm ml-1'>
+                {(story as Story).descendants ?? 0} Comments
+              </a>
+            </div>
+          )}
+
           <div className='flex items-center ml-4'>
             <svg
               className='w-5 h-5'
