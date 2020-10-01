@@ -8,9 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^0.1.3",
+    "javascript-time-ago": "^2.0.13",
     "next": "9.5.3",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-query": "^2.23.0"
   },
   "devDependencies": {
     "@tailwindcss/ui": "^0.6.2",
