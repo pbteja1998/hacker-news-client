@@ -84,4 +84,5 @@ export interface User {
 export enum StoryType {
   ASK,
   SHOW,
+  JOB,
 }

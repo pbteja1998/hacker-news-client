@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 import Link from 'next/link'
-import { Story, StoryType } from '../types'
+import { Job, Story, StoryType } from '../types'
 import { dateTimeString, getDomain, timeOffset } from '../utils'
 import { StorySkeleton } from '../components'
 
@@ -19,17 +19,34 @@ export default function StoryView({ storyId }: { storyId: number }) {
     return <p>Something went wrong</p>
   }
 
-  const story = data as Story
-  const storyType: StoryType = story.url ? StoryType.SHOW : StoryType.ASK
+  const story = data as Story | Job
+  const storyType: StoryType =
+    story.type === 'job'
+      ? StoryType.JOB
+      : story.url
+      ? StoryType.SHOW
+      : StoryType.ASK
 
   return (
     <>
       <div>
         <div>
-          <Link href={storyType === StoryType.SHOW ? '/show' : '/ask'}>
+          <Link
+            href={
+              storyType === StoryType.JOB
+                ? '/job'
+                : StoryType.SHOW
+                ? '/show'
+                : '/ask'
+            }
+          >
             <a className='inline-block'>
               <span className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800'>
-                {storyType === StoryType.SHOW ? 'Show HN' : 'Ask HN'}
+                {storyType === StoryType.JOB
+                  ? 'Job HN'
+                  : StoryType.SHOW
+                  ? 'Show HN'
+                  : 'Ask HN'}
               </span>
             </a>
           </Link>
