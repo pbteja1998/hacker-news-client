@@ -5,7 +5,7 @@ export default function StorySkeleton() {
         <div>
           <div>
             <a href='#' className='inline-block'>
-              <span className='inline-flex items-center px-3 py-0.5 rounded-full rounded bg-gray-200 w-24 h-6' />
+              <span className='inline-flex items-center px-3 py-0.5 rounded-full bg-gray-200 w-24 h-6' />
             </a>
           </div>
           <a href='#' className='block'>

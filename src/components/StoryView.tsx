@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 import Link from 'next/link'
 import { Job, Story, StoryType } from '../types'
-import { dateTimeString, getDomain, timeOffset } from '../utils'
+import { classNames, dateTimeString, getDomain, timeOffset } from '../utils'
 import { StorySkeleton } from '../components'
 import { useContext } from 'react'
 import { StoryContext } from '../pages/_app'
@@ -141,7 +141,10 @@ export default function StoryView({
           )}
 
           <div
-            className='flex items-center ml-4 cursor-pointer'
+            className={classNames(
+              'flex items-center cursor-pointer',
+              storyType !== StoryType.JOB && 'ml-4'
+            )}
             onClick={() => openStory()}
           >
             <svg
