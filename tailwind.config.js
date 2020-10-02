@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   future: {
@@ -13,6 +13,17 @@ module.exports = {
   },
   theme: {
     extend: {
+      typography: (theme) => {
+        return {
+          default: {
+            css: {
+              a: {
+                color: theme('colors.orange.600'),
+              },
+            },
+          },
+        }
+      },
       colors: {
         'accent-1': 'cyan',
       },
@@ -23,4 +34,4 @@ module.exports = {
   },
   variants: {},
   plugins: [require('@tailwindcss/ui')],
-};
+}
