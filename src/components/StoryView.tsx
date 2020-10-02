@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { Job, Story, StoryType } from '../types'
 import { dateTimeString, getDomain, timeOffset } from '../utils'
 import { StorySkeleton } from '../components'
+import { useContext } from 'react'
+import { StoryContext } from '../pages/_app'
 
 export default function StoryView({ storyId }: { storyId: number }) {
   const { isLoading, error, data } = useQuery(`story-${storyId}-data`, () =>
@@ -10,6 +12,8 @@ export default function StoryView({ storyId }: { storyId: number }) {
       `https://hacker-news.firebaseio.com/v0/item/${storyId}.json`
     ).then((res) => res.json())
   )
+
+  const { setSelectedStoryId, setIsPanelOpen } = useContext(StoryContext)
 
   if (isLoading) {
     return <StorySkeleton />
@@ -51,7 +55,13 @@ export default function StoryView({ storyId }: { storyId: number }) {
             </a>
           </Link>
         </div>
-        <a href={story.url} className='block'>
+        <a
+          className='block cursor-pointer'
+          onClick={() => {
+            setSelectedStoryId(storyId)
+            setIsPanelOpen(true)
+          }}
+        >
           <h3 className='mt-4 text-xl leading-7 font-semibold text-gray-900'>
             {story.title}
           </h3>

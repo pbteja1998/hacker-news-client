@@ -1,13 +1,16 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode, useContext, useState } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import { classNames, toTitleCase } from '../utils'
 import { useRouter } from 'next/dist/client/router'
+import Panel from './Panel'
+import { StoryContext } from '../pages/_app'
 
 export default function App({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
   const path = router.pathname.slice(1)
+  const { selectedStoryId, isPanelOpen } = useContext(StoryContext)
   return (
     <>
       <Head>
@@ -231,7 +234,6 @@ export default function App({ children }: { children: ReactNode }) {
             </div>
           </div>
         </nav>
-
         <div className='py-10'>
           <header>
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -250,6 +252,7 @@ export default function App({ children }: { children: ReactNode }) {
             </div>
           </main>
         </div>
+        {selectedStoryId !== 0 && isPanelOpen && <Panel />}
       </div>
     </>
   )
