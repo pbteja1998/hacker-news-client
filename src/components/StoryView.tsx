@@ -44,7 +44,7 @@ export default function StoryView({
 
   return (
     <>
-      <div>
+      <div id={`story-${storyId}`}>
         <div>
           <Link
             href={
