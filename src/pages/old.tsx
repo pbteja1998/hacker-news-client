@@ -1,6 +1,4 @@
-import { Transition } from '@headlessui/react'
 import { useState } from 'react'
-import { classNames } from '../utils'
 import { App, Panel, Post, PostAlt } from '../components/old'
 import { useQuery } from 'react-query'
 

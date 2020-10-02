@@ -1,7 +1,7 @@
 export default function StorySkeleton() {
   return (
     <>
-      <div className='animate-pulse border border-gray-300 shadow rounded-md p-4 w-full'>
+      <div className='animate-pulse border border-gray-300 shadow rounded-md p-4 w-full max-w-sm sm:max-w-md md:max-w-full'>
         <div>
           <div>
             <a href='#' className='inline-block'>
@@ -9,8 +9,8 @@ export default function StorySkeleton() {
             </a>
           </div>
           <a href='#' className='block'>
-            <h3 className='mt-4 bg-gray-400 w-48 h-4' />
-            <p className='mt-2 w-96 h-4 bg-gray-400' />
+            <h3 className='mt-4 bg-gray-400 w-2/3 h-4' />
+            <p className='mt-2 w-3/4 h-4 bg-gray-400' />
           </a>
           <div className='mt-3 flex items-center'>
             <div>

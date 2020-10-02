@@ -17,7 +17,6 @@ export default function App({ children }: { children: ReactNode }) {
             ? ` | ${toTitleCase(router.pathname.slice(1))}`
             : ''}
         </title>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <div className='min-h-screen bg-white'>
         <nav className='bg-white border-b border-gray-200'>
