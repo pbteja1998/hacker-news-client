@@ -3,6 +3,8 @@ import { useContext } from 'react'
 import { useQuery } from 'react-query'
 import { StoryContext } from '../pages/_app'
 import { Story } from '../types'
+import CommentView from './CommentView'
+import StoryView from './StoryView'
 
 export default function Panel() {
   const {
@@ -51,9 +53,7 @@ export default function Panel() {
                 <div className='h-full flex flex-col space-y-6 py-6 bg-white shadow-xl overflow-y-scroll'>
                   <header className='px-4 sm:px-6'>
                     <div className='flex items-start justify-between space-x-3'>
-                      <h2 className='text-lg leading-7 font-medium text-gray-900'>
-                        {story.title}
-                      </h2>
+                      <StoryView storyId={story.id} showCompleteStory={true} />
                       <div className='h-7 flex items-center'>
                         <button
                           onClick={() => setIsOpen(false)}
@@ -82,12 +82,14 @@ export default function Panel() {
                     {/* <!-- Replace with your content --> */}
                     <div className='absolute inset-0 px-4 sm:px-6'>
                       <div className='h-full border-2 border-dashed border-transparent'>
-                        <article
-                          className='prose lg:prose-xl'
-                          dangerouslySetInnerHTML={{
-                            __html: story.text || '',
-                          }}
-                        />
+                        <div className=' mt-4 border-t-2 border-gray-100'>
+                          {story.kids?.map((subCommentId: number) => (
+                            <CommentView
+                              key={subCommentId}
+                              commentId={subCommentId}
+                            />
+                          ))}
+                        </div>
                       </div>
                     </div>
                     {/* <!-- /End replace --> */}
