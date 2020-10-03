@@ -28,8 +28,9 @@ export default function App({ children }: { children: ReactNode }) {
               <div className='flex'>
                 <div className='flex-shrink-0 flex items-center'>
                   <a
+                    href='/'
                     className='cursor-pointer'
-                    onClick={() => router.push('/')}
+                    // onClick={() => router.push('/')}
                   >
                     <img
                       className='block lg:hidden h-8 w-auto'
@@ -45,6 +46,7 @@ export default function App({ children }: { children: ReactNode }) {
                 </div>
                 <div className='hidden sm:-my-px sm:ml-6 space-x-8 sm:flex'>
                   <a
+                    href='/new'
                     className={classNames(
                       `cursor-pointer inline-flex items-center px-1 pt-1 border-b-2 text-sm 
                         font-medium leading-5 transition duration-150 ease-in-out`,
@@ -55,12 +57,13 @@ export default function App({ children }: { children: ReactNode }) {
                           hover:border-gray-300 focus:outline-none focus:text-gray-700
                          focus:border-gray-300`
                     )}
-                    onClick={() => router.push('/new')}
+                    // onClick={() => router.push('/new')}
                   >
                     New Stories
                   </a>
 
                   <a
+                    href='/ask'
                     className={classNames(
                       `cursor-pointer inline-flex items-center px-1 pt-1 border-b-2 text-sm 
                         font-medium leading-5 transition duration-150 ease-in-out`,
@@ -71,12 +74,13 @@ export default function App({ children }: { children: ReactNode }) {
                           hover:border-gray-300 focus:outline-none focus:text-gray-700
                          focus:border-gray-300`
                     )}
-                    onClick={() => router.push('/ask')}
+                    // onClick={() => router.push('/ask')}
                   >
                     Ask Stories
                   </a>
 
                   <a
+                    href='/show'
                     className={classNames(
                       `cursor-pointer inline-flex items-center px-1 pt-1 border-b-2 text-sm 
                         font-medium leading-5 transition duration-150 ease-in-out`,
@@ -87,12 +91,13 @@ export default function App({ children }: { children: ReactNode }) {
                           hover:border-gray-300 focus:outline-none focus:text-gray-700
                          focus:border-gray-300`
                     )}
-                    onClick={() => router.push('/show')}
+                    // onClick={() => router.push('/show')}
                   >
                     Show Stories
                   </a>
 
                   <a
+                    href='/jobs'
                     className={classNames(
                       `cursor-pointer inline-flex items-center px-1 pt-1 border-b-2 text-sm 
                         font-medium leading-5 transition duration-150 ease-in-out`,
@@ -103,7 +108,7 @@ export default function App({ children }: { children: ReactNode }) {
                           hover:border-gray-300 focus:outline-none focus:text-gray-700
                          focus:border-gray-300`
                     )}
-                    onClick={() => router.push('/jobs')}
+                    // onClick={() => router.push('/jobs')}
                   >
                     Jobs Stories
                   </a>
@@ -154,6 +159,7 @@ export default function App({ children }: { children: ReactNode }) {
           <div className={classNames('sm:hidden', isOpen ? 'block' : 'hidden')}>
             <div className='pt-2 pb-3 space-y-1'>
               <a
+                href='/new'
                 className={classNames(
                   `cursor-pointer block pl-3 pr-4 py-2 border-l-4 transition duration-150 ease-in-out`,
                   router.pathname === '/new'
@@ -166,12 +172,13 @@ export default function App({ children }: { children: ReactNode }) {
                       focus:outline-none focus:text-gray-800 focus:bg-gray-50 
                       focus:border-gray-300 `
                 )}
-                onClick={() => router.push('/new')}
+                // onClick={() => router.push('/new')}
               >
                 New Stories
               </a>
 
               <a
+                href='/ask'
                 className={classNames(
                   `cursor-pointer block pl-3 pr-4 py-2 border-l-4 transition duration-150 ease-in-out`,
                   router.pathname === '/ask'
@@ -184,12 +191,13 @@ export default function App({ children }: { children: ReactNode }) {
                       focus:outline-none focus:text-gray-800 focus:bg-gray-50 
                       focus:border-gray-300 `
                 )}
-                onClick={() => router.push('/ask')}
+                // onClick={() => router.push('/ask')}
               >
                 Ask Stories
               </a>
 
               <a
+                href='/show'
                 className={classNames(
                   `cursor-pointer block pl-3 pr-4 py-2 border-l-4 transition duration-150 ease-in-out`,
                   router.pathname === '/show'
@@ -202,12 +210,13 @@ export default function App({ children }: { children: ReactNode }) {
                       focus:outline-none focus:text-gray-800 focus:bg-gray-50 
                       focus:border-gray-300 `
                 )}
-                onClick={() => router.push('/show')}
+                // onClick={() => router.push('/show')}
               >
                 Show Stories
               </a>
 
               <a
+                href='/jobs'
                 className={classNames(
                   `cursor-pointer block pl-3 pr-4 py-2 border-l-4 transition duration-150 ease-in-out`,
                   router.pathname === '/jobs'
@@ -220,7 +229,7 @@ export default function App({ children }: { children: ReactNode }) {
                       focus:outline-none focus:text-gray-800 focus:bg-gray-50 
                       focus:border-gray-300 `
                 )}
-                onClick={() => router.push('/jobs')}
+                // onClick={() => router.push('/jobs')}
               >
                 Jobs Stories
               </a>
