@@ -56,7 +56,7 @@ export default function Pagination({
         <div className='w-0 flex-1 flex'>
           <button
             className={classNames(
-              `-mt-px border-b-2 border-transparent pt-4 pb-2 pr-1 inline-flex 
+              `-mt-px border-b-2 border-transparent pt-4 pb-2 px-3 inline-flex 
               items-center text-sm leading-5 font-medium text-gray-500 
               hover:text-gray-700 focus:outline-none focus:text-gray-700 
               transition ease-in-out duration-150`,
@@ -160,7 +160,7 @@ export default function Pagination({
         <div className='w-0 flex-1 flex justify-end'>
           <button
             className={classNames(
-              `-mt-px border-b-2 border-transparent pt-4 pb-2 pr-1 inline-flex 
+              `-mt-px border-b-2 border-transparent pt-4 pb-2 px-3 inline-flex 
               items-center text-sm leading-5 font-medium text-gray-500 
               hover:text-gray-700 focus:outline-none focus:text-gray-700 
               transition ease-in-out duration-150`,
