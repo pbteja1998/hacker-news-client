@@ -26,7 +26,7 @@ const PageNumber = ({
       )}
       onClick={() => setPage()}
     >
-      {isPlaceHolder ? '...' : page}
+      {isPlaceHolder ? '...' : page + 1}
     </a>
   )
 }
@@ -40,11 +40,11 @@ export default function Pagination({
   currentPage: number
   setCurrentPage: (page: number) => void
 }) {
-  const [input, setInput] = useState(currentPage)
+  const [input, setInput] = useState(currentPage + 1)
   const leftMiddlePage = () => Math.floor((2 + currentPage) / 2)
   const rightMiddlePage = () => Math.floor((currentPage + pagesCount - 3) / 2)
   useEffect(() => {
-    setInput(currentPage)
+    setInput(currentPage + 1)
   }, [currentPage])
 
   return (
@@ -120,10 +120,10 @@ export default function Pagination({
               }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  setCurrentPage(input)
+                  setCurrentPage(input - 1)
                 }
               }}
-              onBlur={() => setCurrentPage(input)}
+              onBlur={() => setCurrentPage(input - 1)}
             />
           </div>
 

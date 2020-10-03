@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
 import { ListBox, Pagination, StoryView, StorySkeleton } from '.'
+import {
+  ALL_TIME,
+  FILTER_OPTIONS,
+  POPULARITY,
+  SORT_BY_OPTIONS,
+} from '../constants'
 
 export default function StoriesList({ urlKey }: { urlKey: string }) {
   const { isLoading, error, data: storyIds } = useQuery(urlKey, () =>
@@ -10,6 +16,8 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
   )
 
   const [currentPage, setCurrentPage] = useState(0)
+  const [currentlySortBy, setCurrentlySortBy] = useState(POPULARITY)
+  const [currentFilter, setCurrentFilter] = useState(ALL_TIME)
 
   useEffect(() => {
     if (isLoading || error) {
@@ -48,55 +56,27 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
               <div className='ml-auto w-40'>
                 <ListBox
                   label='Sort By'
-                  defaultOption='POPULARITY'
-                  options={[
-                    {
-                      value: 'POPULARITY',
-                      text: 'Popularity',
-                    },
-                    {
-                      value: 'DATE',
-                      text: 'Date',
-                    },
-                  ]}
+                  selectedOption={currentlySortBy}
+                  setSelectedOption={setCurrentlySortBy}
+                  options={SORT_BY_OPTIONS}
                 />
               </div>
               <div className='w-40 mr-auto:important sm:mr-0:important'>
                 <ListBox
                   label='Show Only'
-                  defaultOption='ALL_TIME'
-                  options={[
-                    {
-                      value: 'ALL_TIME',
-                      text: 'All Time',
-                    },
-                    {
-                      value: 'LAST_24H',
-                      text: 'Last 24 Hours',
-                    },
-                    {
-                      value: 'PAST_WEEK',
-                      text: 'Past Week',
-                    },
-                    {
-                      value: 'PAST_MONTH',
-                      text: 'Past Month',
-                    },
-                    {
-                      value: 'PAST_YEAR',
-                      text: 'Past Year',
-                    },
-                    {
-                      value: 'CUSTOM_RANGE',
-                      text: 'Custom Range',
-                    },
-                  ]}
+                  selectedOption={currentFilter}
+                  setSelectedOption={setCurrentFilter}
+                  options={FILTER_OPTIONS}
                 />
               </div>
             </div>
 
             {storyIds.map((storyId: number) => (
-              <StoryView key={storyId} storyId={storyId} />
+              <StoryView
+                currentFilter={currentFilter}
+                key={storyId}
+                storyId={storyId}
+              />
             ))}
           </>
         )}

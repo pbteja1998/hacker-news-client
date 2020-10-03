@@ -1,22 +1,23 @@
-import { useState, Fragment } from 'react'
+import { Fragment } from 'react'
 import { Listbox } from '@headlessui/react'
 import { classNames } from '../utils'
 
-type Option = {
+export type ListBoxOption = {
   value: string
   text: string
 }
 
-export default function MyListbox({
+export default function ListBox({
   label,
   options,
-  defaultOption,
+  selectedOption,
+  setSelectedOption,
 }: {
   label: string
-  options: Option[]
-  defaultOption: string
+  options: ListBoxOption[]
+  selectedOption: ListBoxOption
+  setSelectedOption: (option: ListBoxOption) => void
 }) {
-  const [selectedOption, setSelectedOption] = useState<string>(defaultOption)
   return (
     <Listbox value={selectedOption} onChange={setSelectedOption}>
       <div className='space-y-1'>
@@ -36,7 +37,8 @@ export default function MyListbox({
                 <span className='block truncate'>
                   {
                     options.filter(
-                      (option: Option) => option.value === selectedOption
+                      (option: ListBoxOption) =>
+                        option.value === selectedOption.value
                     )[0].text
                   }
                 </span>
@@ -60,12 +62,8 @@ export default function MyListbox({
           </Listbox.Button>
           <div className='absolute mt-1 w-full rounded-md bg-white shadow-lg'>
             <Listbox.Options className='max-h-60 rounded-md py-1 text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5'>
-              {options.map((option: Option) => (
-                <Listbox.Option
-                  as={Fragment}
-                  value={option.value}
-                  key={option.value}
-                >
+              {options.map((option: ListBoxOption) => (
+                <Listbox.Option as={Fragment} value={option} key={option.value}>
                   {({ active, selected }) => (
                     <li
                       className={classNames(

@@ -5,13 +5,23 @@ import { classNames, dateTimeString, getDomain, timeOffset } from '../utils'
 import { StorySkeleton } from '../components'
 import { useContext } from 'react'
 import { StoryContext } from '../pages/_app'
+import { ListBoxOption } from './ListBox'
+import {
+  ALL_TIME,
+  LAST_24H,
+  PAST_MONTH,
+  PAST_WEEK,
+  PAST_YEAR,
+} from '../constants'
 
 export default function StoryView({
   storyId,
   showCompleteStory = false,
+  currentFilter = ALL_TIME,
 }: {
   storyId: number
   showCompleteStory?: boolean
+  currentFilter?: ListBoxOption
 }) {
   const { isLoading, error, data } = useQuery(`story-${storyId}-data`, () =>
     fetch(
@@ -40,6 +50,42 @@ export default function StoryView({
   const openStory = () => {
     setSelectedStoryId(storyId)
     setIsPanelOpen(true)
+  }
+
+  const shouldShow = () => {
+    if (isLoading || error) {
+      return true
+    }
+
+    const timestampToday = Math.round(new Date().getTime() / 1000)
+    const timestampYesterday = timestampToday - 24 * 3600
+    const timestampAWeekAgo = timestampToday - 7 * 24 * 3600
+    const timestampAMonthAgo = timestampToday - 30 * 24 * 3600
+    const timestampAYearAgo = timestampToday - 365 * 24 * 3600
+
+    switch (currentFilter) {
+      case ALL_TIME:
+        return true
+
+      case LAST_24H:
+        return story.time >= timestampYesterday
+
+      case PAST_WEEK:
+        return story.time >= timestampAWeekAgo
+
+      case PAST_MONTH:
+        return story.time >= timestampAMonthAgo
+
+      case PAST_YEAR:
+        return story.time >= timestampAYearAgo
+
+      default:
+        return false
+    }
+  }
+
+  if (!shouldShow()) {
+    return <></>
   }
 
   return (
