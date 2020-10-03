@@ -3,9 +3,12 @@ import { useQuery } from 'react-query'
 import { ListBox, Pagination, StoryView, StorySkeleton, Ring } from '.'
 import {
   ALL_TIME,
+  ASCENDING,
   DATE,
+  DESCENDING,
   FILTER_OPTIONS,
   NUMBER_OF_COMMENTS,
+  ORDER_IN_OPTIONS,
   POPULARITY,
   SORT_BY_OPTIONS,
 } from '../constants'
@@ -47,6 +50,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
 
   const [currentPage, setCurrentPage] = useState(0)
   const [currentlySortBy, setCurrentlySortBy] = useState(POPULARITY)
+  const [currentlyOrderIn, setCurrentlyOrderIn] = useState(DESCENDING)
   const [currentFilter, setCurrentFilter] = useState(ALL_TIME)
   const [storyIds, setStoryIds] = useState<number[]>([])
 
@@ -60,19 +64,23 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
   }, [isLoading, error, data, totalStories])
 
   useEffect(() => {
+    const multiplicationFactor = currentlyOrderIn === ASCENDING ? -1 : 1
     if (Object.values(storiesMap).length === storyIds.length) {
       let sortedStoryNodes
       if (currentlySortBy === POPULARITY) {
         sortedStoryNodes = Object.values(storiesMap).sort(
-          (a: StoryNode, b: StoryNode) => b.points - a.points
+          (a: StoryNode, b: StoryNode) =>
+            multiplicationFactor * (b.points - a.points)
         )
       } else if (currentlySortBy === DATE) {
         sortedStoryNodes = Object.values(storiesMap).sort(
-          (a: StoryNode, b: StoryNode) => b.time - a.time
+          (a: StoryNode, b: StoryNode) =>
+            multiplicationFactor * (b.time - a.time)
         )
       } else if (currentlySortBy === NUMBER_OF_COMMENTS) {
         sortedStoryNodes = Object.values(storiesMap).sort(
-          (a: StoryNode, b: StoryNode) => b.comments - a.comments
+          (a: StoryNode, b: StoryNode) =>
+            multiplicationFactor * (b.comments - a.comments)
         )
       }
       setStoryIds(sortedStoryNodes.map((a: StoryNode) => a.storyId))
@@ -122,8 +130,16 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
                   )}
                 />
               ) : (
-                <div className='flex space-x-4'>
-                  <div className='ml-auto w-40'>
+                <div className='flex flex-wrap space-x-4'>
+                  <div className='w-32 sm:w-40'>
+                    <ListBox
+                      label='Order In'
+                      selectedOption={currentlyOrderIn}
+                      setSelectedOption={setCurrentlyOrderIn}
+                      options={ORDER_IN_OPTIONS}
+                    />
+                  </div>
+                  <div className='w-32 sm:w-40'>
                     <ListBox
                       label='Sort By'
                       selectedOption={currentlySortBy}
@@ -131,7 +147,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
                       options={SORT_BY_OPTIONS}
                     />
                   </div>
-                  <div className='w-40 mr-auto:important sm:mr-0:important'>
+                  <div className='w-32 sm:w-40 mr-auto:important sm:mr-0:important'>
                     <ListBox
                       label='Show Only'
                       selectedOption={currentFilter}

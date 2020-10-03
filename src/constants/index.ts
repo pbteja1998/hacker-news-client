@@ -14,6 +14,16 @@ export const DATE: ListBoxOption = {
   text: 'Date',
 }
 
+export const ASCENDING: ListBoxOption = {
+  value: 'ASCENDING',
+  text: 'Ascending',
+}
+
+export const DESCENDING: ListBoxOption = {
+  value: 'DESCENDING',
+  text: 'Descending',
+}
+
 export const ALL_TIME: ListBoxOption = {
   value: 'ALL_TIME',
   text: 'All Time',
@@ -47,3 +57,4 @@ export const FILTER_OPTIONS: ListBoxOption[] = [
   PAST_MONTH,
   PAST_YEAR,
 ]
+export const ORDER_IN_OPTIONS: ListBoxOption[] = [ASCENDING, DESCENDING]
