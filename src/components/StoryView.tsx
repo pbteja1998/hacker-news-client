@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Job, Story, StoryType } from '../types'
 import { classNames, dateTimeString, getDomain, timeOffset } from '../utils'
 import { StorySkeleton } from '../components'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { StoryContext } from '../pages/_app'
 import { ListBoxOption } from './ListBox'
 import {
@@ -18,10 +18,22 @@ export default function StoryView({
   storyId,
   showCompleteStory = false,
   currentFilter = ALL_TIME,
+  setStoryNode = () => {},
 }: {
   storyId: number
   showCompleteStory?: boolean
   currentFilter?: ListBoxOption
+  setStoryNode?: ({
+    storyId,
+    points,
+    time,
+    comments,
+  }: {
+    storyId: number
+    points: number
+    time: number
+    comments: number
+  }) => void
 }) {
   const { isLoading, error, data } = useQuery(`story-${storyId}-data`, () =>
     fetch(
@@ -30,6 +42,20 @@ export default function StoryView({
   )
 
   const { setSelectedStoryId, setIsPanelOpen } = useContext(StoryContext)
+
+  useEffect(() => {
+    if (isLoading || error) {
+      return
+    }
+    const story = data as Story | Job
+    setStoryNode({
+      storyId,
+      points: story.score,
+      time: story.time,
+      comments:
+        storyType === StoryType.JOB ? 0 : (story as Story).descendants ?? 0,
+    })
+  }, [isLoading, error, data])
 
   if (isLoading) {
     return <StorySkeleton />

@@ -3,21 +3,78 @@ import { useQuery } from 'react-query'
 import { ListBox, Pagination, StoryView, StorySkeleton } from '.'
 import {
   ALL_TIME,
+  DATE,
   FILTER_OPTIONS,
+  NUMBER_OF_COMMENTS,
   POPULARITY,
   SORT_BY_OPTIONS,
 } from '../constants'
 
 export default function StoriesList({ urlKey }: { urlKey: string }) {
-  const { isLoading, error, data: storyIds } = useQuery(urlKey, () =>
+  const { isLoading, error, data } = useQuery(urlKey, () =>
     fetch(`https://hacker-news.firebaseio.com/v0/${urlKey}.json`).then((res) =>
       res.json()
     )
   )
 
+  type StoryNode = {
+    storyId: number
+    points: number
+    time: number
+    comments: number
+  }
+
+  const [storiesMap, setStoriesMap] = useState<Record<number, StoryNode>>({})
+
+  const setStoryNode = ({
+    storyId,
+    points,
+    time,
+    comments,
+  }: {
+    storyId: number
+    points: number
+    time: number
+    comments: number
+  }) =>
+    setStoriesMap({
+      ...storiesMap,
+      [storyId]: { storyId, points, time, comments },
+    })
+
   const [currentPage, setCurrentPage] = useState(0)
   const [currentlySortBy, setCurrentlySortBy] = useState(POPULARITY)
   const [currentFilter, setCurrentFilter] = useState(ALL_TIME)
+  const [storyIds, setStoryIds] = useState<number[]>([])
+
+  useEffect(() => {
+    if (isLoading || error) {
+      return
+    }
+    setStoryIds(data)
+  }, [isLoading, error, data])
+
+  console.log({ storiesMap })
+
+  useEffect(() => {
+    if (Object.values(storiesMap).length === storyIds.length) {
+      let sortedStoryNodes
+      if (currentlySortBy === POPULARITY) {
+        sortedStoryNodes = Object.values(storiesMap).sort(
+          (a: StoryNode, b: StoryNode) => b.points - a.points
+        )
+      } else if (currentlySortBy === DATE) {
+        sortedStoryNodes = Object.values(storiesMap).sort(
+          (a: StoryNode, b: StoryNode) => b.time - a.time
+        )
+      } else if (currentlySortBy === NUMBER_OF_COMMENTS) {
+        sortedStoryNodes = Object.values(storiesMap).sort(
+          (a: StoryNode, b: StoryNode) => b.comments - a.comments
+        )
+      }
+      setStoryIds(sortedStoryNodes.map((a: StoryNode) => a.storyId))
+    }
+  }, [storiesMap, currentlySortBy])
 
   useEffect(() => {
     if (isLoading || error) {
@@ -33,6 +90,9 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
   if (error) {
     return <p>Something went wrong</p>
   }
+
+  const allStoryNodes = Object.values(storiesMap)
+  console.log({ allStoryNodes })
 
   return (
     <>
@@ -76,6 +136,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
                 currentFilter={currentFilter}
                 key={storyId}
                 storyId={storyId}
+                setStoryNode={setStoryNode}
               />
             ))}
           </>

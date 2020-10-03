@@ -1,5 +1,10 @@
 import { ListBoxOption } from '../components/ListBox'
 
+export const NUMBER_OF_COMMENTS: ListBoxOption = {
+  value: 'NUMBER_OF_COMMENTS',
+  text: 'Comments',
+}
+
 export const POPULARITY: ListBoxOption = {
   value: 'POPULARITY',
   text: 'Popularity',
@@ -30,7 +35,11 @@ export const PAST_YEAR: ListBoxOption = {
   text: 'Past Year',
 }
 
-export const SORT_BY_OPTIONS: ListBoxOption[] = [POPULARITY, DATE]
+export const SORT_BY_OPTIONS: ListBoxOption[] = [
+  POPULARITY,
+  DATE,
+  NUMBER_OF_COMMENTS,
+]
 export const FILTER_OPTIONS: ListBoxOption[] = [
   ALL_TIME,
   LAST_24H,
