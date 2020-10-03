@@ -247,9 +247,7 @@ export default function App({ children }: { children: ReactNode }) {
           <main>
             <div className='max-w-7xl mx-auto sm:px-6 lg:px-8'>
               <div className='px-4 pb-8 sm:px-0'>
-                <div className='border-4 border-dashed border-transparent rounded-lg h-96'>
-                  {children}
-                </div>
+                <div className='rounded-lg h-96'>{children}</div>
               </div>
             </div>
           </main>
