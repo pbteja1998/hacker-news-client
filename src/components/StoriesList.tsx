@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
-import { ListBox, Pagination, StoryView, StorySkeleton } from '.'
+import {
+  ListBox,
+  Pagination,
+  StoryView,
+  StorySkeleton,
+  Ellipsis,
+  Ring,
+} from '.'
 import {
   ALL_TIME,
   DATE,
@@ -112,24 +119,33 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
               pagesCount={Math.ceil(storyIds.length / 10)}
             />
 
-            <div className='flex space-x-4'>
-              <div className='ml-auto w-40'>
-                <ListBox
-                  label='Sort By'
-                  selectedOption={currentlySortBy}
-                  setSelectedOption={setCurrentlySortBy}
-                  options={SORT_BY_OPTIONS}
-                />
+            {Object.values(storiesMap).length < storyIds.length ? (
+              <Ring
+                className='ml-auto'
+                progress={Math.floor(
+                  (Object.values(storiesMap).length * 100) / storyIds.length
+                )}
+              />
+            ) : (
+              <div className='flex space-x-4'>
+                <div className='ml-auto w-40'>
+                  <ListBox
+                    label='Sort By'
+                    selectedOption={currentlySortBy}
+                    setSelectedOption={setCurrentlySortBy}
+                    options={SORT_BY_OPTIONS}
+                  />
+                </div>
+                <div className='w-40 mr-auto:important sm:mr-0:important'>
+                  <ListBox
+                    label='Show Only'
+                    selectedOption={currentFilter}
+                    setSelectedOption={setCurrentFilter}
+                    options={FILTER_OPTIONS}
+                  />
+                </div>
               </div>
-              <div className='w-40 mr-auto:important sm:mr-0:important'>
-                <ListBox
-                  label='Show Only'
-                  selectedOption={currentFilter}
-                  setSelectedOption={setCurrentFilter}
-                  options={FILTER_OPTIONS}
-                />
-              </div>
-            </div>
+            )}
 
             {storyIds.map((storyId: number) => (
               <StoryView

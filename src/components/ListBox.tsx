@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Listbox } from '@headlessui/react'
-import { classNames } from '../utils'
+import classNames from 'classnames'
 
 export type ListBoxOption = {
   value: string

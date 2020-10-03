@@ -1,6 +1,7 @@
 import { ReactNode, useContext, useState } from 'react'
 import Head from 'next/head'
-import { classNames, toTitleCase } from '../utils'
+import classNames from 'classnames'
+import { toTitleCase } from '../utils'
 import { useRouter } from 'next/dist/client/router'
 import Panel from './Panel'
 import { StoryContext } from '../pages/_app'

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { classNames } from '../utils'
+import classNames from 'classnames'
 
 const PageNumber = ({
   page,
