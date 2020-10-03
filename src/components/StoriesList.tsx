@@ -131,7 +131,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
                 />
               ) : (
                 <div className='flex flex-wrap space-x-4'>
-                  <div className='w-32 sm:w-40'>
+                  <div className='hidden sm:block w-40'>
                     <ListBox
                       label='Order In'
                       selectedOption={currentlyOrderIn}
@@ -139,7 +139,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
                       options={ORDER_IN_OPTIONS}
                     />
                   </div>
-                  <div className='w-32 sm:w-40'>
+                  <div className='w-40'>
                     <ListBox
                       label='Sort By'
                       selectedOption={currentlySortBy}
@@ -147,7 +147,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
                       options={SORT_BY_OPTIONS}
                     />
                   </div>
-                  <div className='w-32 sm:w-40 mr-auto:important sm:mr-0:important'>
+                  <div className='w-40 mr-auto:important sm:mr-0:important'>
                     <ListBox
                       label='Show Only'
                       selectedOption={currentFilter}
