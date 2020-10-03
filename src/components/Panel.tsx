@@ -82,7 +82,7 @@ export default function Panel() {
                     {/* <!-- Replace with your content --> */}
                     <div className='absolute inset-0 px-4 sm:px-6'>
                       <div className='h-full border-2 border-dashed border-transparent'>
-                        <div className=' mt-4 border-t-2 border-gray-100'>
+                        <div className='mt-4'>
                           {story.kids?.map((subCommentId: number) => (
                             <CommentView
                               key={subCommentId}

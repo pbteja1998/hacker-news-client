@@ -161,16 +161,26 @@ export default function StoryView({
                 {timeOffset(story.time)}
               </time>
               <span className='mx-1'>&middot;</span>
-              <p className='text-sm leading-5 font-medium text-gray-700'>
-                <a
-                  href={`https://news.ycombinator.com/user?id=${story.by}`}
-                  className='hover:underline'
-                  target='_blank'
-                  rel='noopener noreferrer nofollow'
+              <a
+                href={`https://news.ycombinator.com/user?id=${story.by}`}
+                target='_blank'
+                rel='noopener noreferrer nofollow'
+                className='text-sm leading-5 font-medium text-gray-700 flex items-center cursor-pointer'
+              >
+                <svg
+                  className='w-4 h-4'
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 20 20'
+                  fill='currentColor'
                 >
-                  {story.by}
-                </a>
-              </p>
+                  <path
+                    fillRule='evenodd'
+                    d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z'
+                    clipRule='evenodd'
+                  />
+                </svg>
+                <p className='hover:underline ml-1'>{story.by}</p>
+              </a>
               {storyType == StoryType.SHOW && (
                 <>
                   <span className='mx-1'>&middot;</span>
@@ -204,7 +214,7 @@ export default function StoryView({
                   strokeLinecap='round'
                   strokeLinejoin='round'
                   strokeWidth={2}
-                  d='M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z'
+                  d='M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z'
                 />
               </svg>
               <a className='text-sm ml-1'>
