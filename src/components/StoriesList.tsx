@@ -118,34 +118,35 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
               setCurrentPage={setCurrentPage}
               pagesCount={Math.ceil(storyIds.length / 10)}
             />
-
-            {Object.values(storiesMap).length < storyIds.length ? (
-              <Ring
-                className='ml-auto'
-                progress={Math.floor(
-                  (Object.values(storiesMap).length * 100) / storyIds.length
-                )}
-              />
-            ) : (
-              <div className='flex space-x-4'>
-                <div className='ml-auto w-40'>
-                  <ListBox
-                    label='Sort By'
-                    selectedOption={currentlySortBy}
-                    setSelectedOption={setCurrentlySortBy}
-                    options={SORT_BY_OPTIONS}
-                  />
+            <div className='absolute top-36 sm:top-24 sm:right-20'>
+              {Object.values(storiesMap).length < storyIds.length ? (
+                <Ring
+                  className='ml-auto'
+                  progress={Math.floor(
+                    (Object.values(storiesMap).length * 100) / storyIds.length
+                  )}
+                />
+              ) : (
+                <div className='flex space-x-4'>
+                  <div className='ml-auto w-40'>
+                    <ListBox
+                      label='Sort By'
+                      selectedOption={currentlySortBy}
+                      setSelectedOption={setCurrentlySortBy}
+                      options={SORT_BY_OPTIONS}
+                    />
+                  </div>
+                  <div className='w-40 mr-auto:important sm:mr-0:important'>
+                    <ListBox
+                      label='Show Only'
+                      selectedOption={currentFilter}
+                      setSelectedOption={setCurrentFilter}
+                      options={FILTER_OPTIONS}
+                    />
+                  </div>
                 </div>
-                <div className='w-40 mr-auto:important sm:mr-0:important'>
-                  <ListBox
-                    label='Show Only'
-                    selectedOption={currentFilter}
-                    setSelectedOption={setCurrentFilter}
-                    options={FILTER_OPTIONS}
-                  />
-                </div>
-              </div>
-            )}
+              )}
+            </div>
 
             {storyIds.map((storyId: number) => (
               <StoryView
