@@ -51,7 +51,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
     if (isLoading || error) {
       return
     }
-    setStoryIds(data)
+    setStoryIds(data.slice(0, 60))
   }, [isLoading, error, data])
 
   useEffect(() => {
@@ -93,7 +93,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
 
   return (
     <>
-      <div className='mt-6 grid gap-16 border-t-2 border-transparent pt-10 lg:grid-cols-1 lg:gap-x-5 lg:gap-y-12'>
+      <div className='mt-6 grid gap-16 border-t-2 border-transparent py-10 lg:grid-cols-1 lg:gap-x-5 lg:gap-y-12'>
         {isLoading ? (
           <>
             <StorySkeleton />

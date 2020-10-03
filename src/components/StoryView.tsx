@@ -144,7 +144,7 @@ export default function StoryView({
             {story.title}
           </h3>
           <article
-            className='mt-3 text-base leading-6 text-gray-500'
+            className='mt-1 text-base leading-6 text-gray-500'
             dangerouslySetInnerHTML={{
               __html: story.text
                 ? showCompleteStory
@@ -157,10 +157,20 @@ export default function StoryView({
         <div className='mt-1 flex items-center'>
           <div>
             <div className='flex text-sm leading-5 text-gray-500'>
-              <time dateTime={dateTimeString(story.time)}>
-                {timeOffset(story.time)}
-              </time>
-              <span className='mx-1'>&middot;</span>
+              {storyType == StoryType.SHOW && (
+                <>
+                  <a
+                    href={story.url}
+                    className='underline'
+                    target='_blank'
+                    rel='noopener noreferrer nofollow'
+                  >
+                    {getDomain(story.url || '')}
+                  </a>
+                  <span className='mx-1'>&middot;</span>
+                </>
+              )}
+
               <a
                 href={`https://news.ycombinator.com/user?id=${story.by}`}
                 target='_blank'
@@ -181,19 +191,10 @@ export default function StoryView({
                 </svg>
                 <p className='hover:underline ml-1'>{story.by}</p>
               </a>
-              {storyType == StoryType.SHOW && (
-                <>
-                  <span className='mx-1'>&middot;</span>
-                  <a
-                    href={story.url}
-                    className='underline'
-                    target='_blank'
-                    rel='noopener noreferrer nofollow'
-                  >
-                    {getDomain(story.url || '')}
-                  </a>
-                </>
-              )}
+              <span className='mx-1'>&middot;</span>
+              <time dateTime={dateTimeString(story.time)}>
+                {timeOffset(story.time)}
+              </time>
             </div>
           </div>
         </div>
