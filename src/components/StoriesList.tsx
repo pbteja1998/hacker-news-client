@@ -85,7 +85,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
       }
       setStoryIds(sortedStoryNodes.map((a: StoryNode) => a.storyId))
     }
-  }, [storiesMap, currentlySortBy])
+  }, [storiesMap, currentlySortBy, currentlyOrderIn])
 
   useEffect(() => {
     if (isLoading || error) {
