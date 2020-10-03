@@ -54,8 +54,6 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
     setStoryIds(data)
   }, [isLoading, error, data])
 
-  console.log({ storiesMap })
-
   useEffect(() => {
     if (Object.values(storiesMap).length === storyIds.length) {
       let sortedStoryNodes
@@ -92,7 +90,6 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
   }
 
   const allStoryNodes = Object.values(storiesMap)
-  console.log({ allStoryNodes })
 
   return (
     <>

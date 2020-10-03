@@ -30,7 +30,6 @@ export default function CommentView({ commentId }: { commentId: number }) {
   }
 
   const comment = data as Comment
-  console.log({ comment })
 
   return (
     <div className='mt-5'>
