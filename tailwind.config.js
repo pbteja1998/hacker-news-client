@@ -13,6 +13,18 @@ module.exports = {
   },
   theme: {
     extend: {
+      customForms: (theme) => {
+        return {
+          default: {
+            input: {
+              '&:focus': {
+                boxShadow: theme('boxShadow.outline-orange'),
+                borderColor: theme('colors.orange.600'),
+              },
+            },
+          },
+        }
+      },
       typography: (theme) => {
         return {
           default: {

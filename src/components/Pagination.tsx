@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { classNames } from '../utils'
 
 const PageNumber = ({
@@ -14,10 +15,14 @@ const PageNumber = ({
   return (
     <a
       className={classNames(
-        'cursor-pointer -mt-px border-t-2 pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium focus:outline-none transition ease-in-out duration-150',
+        `ml-2 cursor-pointer -mt-px border-b-2 pt-4 px-4 inline-flex 
+        items-center text-sm leading-5 font-medium focus:outline-none 
+        transition ease-in-out duration-150`,
         isSelected
-          ? 'border-orange-500 text-orange-600 focus:text-orange-800 focus:border-orange-700'
-          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-400'
+          ? `border-orange-500 text-orange-600 focus:text-orange-800 
+          focus:border-orange-700`
+          : `border-transparent text-gray-500 hover:text-gray-700 
+          hover:border-gray-300 focus:text-gray-700 focus:border-gray-400`
       )}
       onClick={() => setPage()}
     >
@@ -35,14 +40,26 @@ export default function Pagination({
   currentPage: number
   setCurrentPage: (page: number) => void
 }) {
-  // const pages = Array.from(Array(10).keys())
+  const [input, setInput] = useState(currentPage)
+  const leftMiddlePage = () => Math.floor((2 + currentPage) / 2)
+  const rightMiddlePage = () => Math.floor((currentPage + pagesCount - 3) / 2)
+  useEffect(() => {
+    setInput(currentPage)
+  }, [currentPage])
+
   return (
     <>
-      <nav className='sticky top-0 bg-white border-b border-gray-200 px-4 pb-4 flex items-center justify-between sm:px-0'>
+      <nav
+        className={`sticky top-0 bg-white border-b border-gray-200 px-4
+          flex items-center justify-between sm:px-0`}
+      >
         <div className='w-0 flex-1 flex'>
-          <a
+          <button
             className={classNames(
-              '-mt-px border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150',
+              `-mt-px border-b-2 border-transparent pt-4 pb-2 pr-1 inline-flex 
+              items-center text-sm leading-5 font-medium text-gray-500 
+              hover:text-gray-700 focus:outline-none focus:text-gray-700 
+              transition ease-in-out duration-150`,
               currentPage > 0 ? 'cursor-pointer' : 'cursor-not-allowed'
             )}
             onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
@@ -59,59 +76,94 @@ export default function Pagination({
               />
             </svg>
             Previous
-          </a>
+          </button>
         </div>
         <div className='hidden md:flex'>
           <PageNumber
-            key={0}
+            key={'page-0'}
             page={0}
             setPage={() => setCurrentPage(0)}
             isSelected={currentPage === 0}
           />
           <PageNumber
-            key={1}
+            key={'page-1'}
             page={1}
             setPage={() => setCurrentPage(1)}
             isSelected={currentPage === 1}
           />
           <PageNumber
-            key={2}
+            key={'page-2'}
             page={2}
             setPage={() => setCurrentPage(2)}
             isSelected={currentPage === 2}
           />
 
-          <PageNumber
-            isPlaceHolder={true}
-            key={Math.floor(pagesCount / 2)}
-            page={Math.floor(pagesCount / 2)}
-            setPage={() => setCurrentPage(Math.floor(pagesCount / 2))}
-            isSelected={currentPage === Math.floor(pagesCount / 2)}
-          />
+          {leftMiddlePage() > 2 && leftMiddlePage() < currentPage && (
+            <PageNumber
+              isPlaceHolder={true}
+              key={'left-middle-page'}
+              page={leftMiddlePage()}
+              setPage={() => setCurrentPage(leftMiddlePage())}
+              isSelected={false}
+            />
+          )}
+
+          <div className='mt-1 mx-2 relative shadow-sm' key={'input'}>
+            <input
+              className='form-input rounded-sm block w-12 mt-3 sm:text-sm sm:leading-5 text-orange-600 focus:text-orange-800'
+              placeholder='25'
+              value={input}
+              onChange={(e) => {
+                if (!isNaN(+e.target.value)) {
+                  setInput(+e.target.value)
+                }
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  setCurrentPage(input)
+                }
+              }}
+              onBlur={() => setCurrentPage(input)}
+            />
+          </div>
+
+          {rightMiddlePage() > currentPage &&
+            rightMiddlePage() < pagesCount - 3 && (
+              <PageNumber
+                isPlaceHolder={true}
+                key={'right-middle-page'}
+                page={rightMiddlePage()}
+                setPage={() => setCurrentPage(rightMiddlePage())}
+                isSelected={false}
+              />
+            )}
 
           <PageNumber
-            key={pagesCount - 3}
+            key={`page - ${pagesCount - 3}`}
             page={pagesCount - 3}
             setPage={() => setCurrentPage(pagesCount - 3)}
             isSelected={currentPage === pagesCount - 3}
           />
           <PageNumber
-            key={pagesCount - 2}
+            key={`page - ${pagesCount - 2}`}
             page={pagesCount - 2}
             setPage={() => setCurrentPage(pagesCount - 2)}
             isSelected={currentPage === pagesCount - 2}
           />
           <PageNumber
-            key={pagesCount - 1}
+            key={`page - ${pagesCount - 1}`}
             page={pagesCount - 1}
             setPage={() => setCurrentPage(pagesCount - 1)}
             isSelected={currentPage === pagesCount - 1}
           />
         </div>
         <div className='w-0 flex-1 flex justify-end'>
-          <a
+          <button
             className={classNames(
-              '-mt-px border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150',
+              `-mt-px border-b-2 border-transparent pt-4 pb-2 pr-1 inline-flex 
+              items-center text-sm leading-5 font-medium text-gray-500 
+              hover:text-gray-700 focus:outline-none focus:text-gray-700 
+              transition ease-in-out duration-150`,
               currentPage < pagesCount - 1
                 ? 'cursor-pointer'
                 : 'cursor-not-allowed'
@@ -132,7 +184,7 @@ export default function Pagination({
                 clipRule='evenodd'
               />
             </svg>
-          </a>
+          </button>
         </div>
       </nav>
     </>
