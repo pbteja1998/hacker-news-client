@@ -7,3 +7,12 @@ html {
 @tailwind components;
 
 @tailwind utilities;
+
+.mr-auto\:important {
+  margin-right: auto !important;
+}
+@media (min-width: 24rem) {
+  .sm\:mr-0\:important {
+    margin-right: 0 !important;
+  }
+}

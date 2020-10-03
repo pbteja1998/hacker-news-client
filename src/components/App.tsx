@@ -1,5 +1,4 @@
 import { ReactNode, useContext, useState } from 'react'
-import Link from 'next/link'
 import Head from 'next/head'
 import { classNames, toTitleCase } from '../utils'
 import { useRouter } from 'next/dist/client/router'

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
-import { StoryView, StorySkeleton } from '../components'
-import Pagination from './Pagination'
+import { ListBox, Pagination, StoryView, StorySkeleton } from '.'
 
 export default function StoriesList({ urlKey }: { urlKey: string }) {
   const { isLoading, error, data: storyIds } = useQuery(urlKey, () =>
@@ -44,6 +43,58 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
               setCurrentPage={setCurrentPage}
               pagesCount={Math.ceil(storyIds.length / 10)}
             />
+
+            <div className='flex space-x-4'>
+              <div className='ml-auto w-40'>
+                <ListBox
+                  label='Sort By'
+                  defaultOption='POPULARITY'
+                  options={[
+                    {
+                      value: 'POPULARITY',
+                      text: 'Popularity',
+                    },
+                    {
+                      value: 'DATE',
+                      text: 'Date',
+                    },
+                  ]}
+                />
+              </div>
+              <div className='w-40 mr-auto:important sm:mr-0:important'>
+                <ListBox
+                  label='Show Only'
+                  defaultOption='ALL_TIME'
+                  options={[
+                    {
+                      value: 'ALL_TIME',
+                      text: 'All Time',
+                    },
+                    {
+                      value: 'LAST_24H',
+                      text: 'Last 24 Hours',
+                    },
+                    {
+                      value: 'PAST_WEEK',
+                      text: 'Past Week',
+                    },
+                    {
+                      value: 'PAST_MONTH',
+                      text: 'Past Month',
+                    },
+                    {
+                      value: 'PAST_YEAR',
+                      text: 'Past Year',
+                    },
+                    {
+                      value: 'CUSTOM_RANGE',
+                      text: 'Custom Range',
+                    },
+                  ]}
+                />
+              </div>
+            </div>
+
             {storyIds.map((storyId: number) => (
               <StoryView key={storyId} storyId={storyId} />
             ))}
