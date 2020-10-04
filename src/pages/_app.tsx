@@ -19,24 +19,32 @@ export const StoryContext = createContext<{
   setIsPanelOpen: () => {},
 })
 
+export const SearchContext = createContext<{
+  query: string
+  setQuery: (query: string) => void
+}>({ query: '', setQuery: () => {} })
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [selectedStoryId, setSelectedStoryId] = useState(0)
   const [isPanelOpen, setIsPanelOpen] = useState(false)
+  const [query, setQuery] = useState('')
 
   return (
     <ReactQueryCacheProvider queryCache={queryCache}>
-      <StoryContext.Provider
-        value={{
-          selectedStoryId,
-          setSelectedStoryId,
-          isPanelOpen,
-          setIsPanelOpen,
-        }}
-      >
-        <App>
-          <Component {...pageProps} />
-        </App>
-      </StoryContext.Provider>
+      <SearchContext.Provider value={{ query, setQuery }}>
+        <StoryContext.Provider
+          value={{
+            selectedStoryId,
+            setSelectedStoryId,
+            isPanelOpen,
+            setIsPanelOpen,
+          }}
+        >
+          <App>
+            <Component {...pageProps} />
+          </App>
+        </StoryContext.Provider>
+      </SearchContext.Provider>
     </ReactQueryCacheProvider>
   )
 }

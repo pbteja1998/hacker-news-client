@@ -4,13 +4,14 @@ import classNames from 'classnames'
 import { toTitleCase } from '../utils'
 import { useRouter } from 'next/dist/client/router'
 import Panel from './Panel'
-import { StoryContext } from '../pages/_app'
+import { SearchContext, StoryContext } from '../pages/_app'
 
 export default function App({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
   const path = router.pathname.slice(1)
   const { selectedStoryId, isPanelOpen } = useContext(StoryContext)
+  const { query, setQuery } = useContext(SearchContext)
   return (
     <>
       <Head>
@@ -59,7 +60,8 @@ export default function App({ children }: { children: ReactNode }) {
                     )}
                     // onClick={() => router.push('/new')}
                   >
-                    New Stories
+                    New
+                    <span className='sm:hidden md:inline'>&nbsp;Stories</span>
                   </a>
 
                   <a
@@ -76,7 +78,8 @@ export default function App({ children }: { children: ReactNode }) {
                     )}
                     // onClick={() => router.push('/ask')}
                   >
-                    Ask Stories
+                    Ask
+                    <span className='hidden md:inline'>&nbsp;Stories</span>
                   </a>
 
                   <a
@@ -93,7 +96,8 @@ export default function App({ children }: { children: ReactNode }) {
                     )}
                     // onClick={() => router.push('/show')}
                   >
-                    Show Stories
+                    Show
+                    <span className='hidden md:inline'>&nbsp;Stories</span>
                   </a>
 
                   <a
@@ -110,8 +114,39 @@ export default function App({ children }: { children: ReactNode }) {
                     )}
                     // onClick={() => router.push('/jobs')}
                   >
-                    Jobs Stories
+                    Jobs
+                    <span className='hidden md:inline'>&nbsp;Stories</span>
                   </a>
+                </div>
+              </div>
+              <div className='flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end'>
+                <div className='max-w-lg w-full lg:max-w-xs'>
+                  <label htmlFor='search' className='sr-only'>
+                    Search
+                  </label>
+                  <div className='relative'>
+                    <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+                      <svg
+                        className='h-5 w-5 text-gray-400'
+                        fill='currentColor'
+                        viewBox='0 0 20 20'
+                      >
+                        <path
+                          fillRule='evenodd'
+                          d='M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z'
+                          clipRule='evenodd'
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      id='search'
+                      className='block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-orange-300 focus:shadow-outline-orange sm:text-sm transition duration-150 ease-in-out'
+                      placeholder='Search'
+                      type='search'
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                    />
+                  </div>
                 </div>
               </div>
               <div className='-mr-2 flex items-center sm:hidden'>
@@ -156,7 +191,12 @@ export default function App({ children }: { children: ReactNode }) {
             </div>
           </div>
 
-          <div className={classNames('sm:hidden', isOpen ? 'block' : 'hidden')}>
+          <div
+            className={classNames(
+              'relative z-10 bg-white sm:hidden',
+              isOpen ? 'block' : 'hidden'
+            )}
+          >
             <div className='pt-2 pb-3 space-y-1'>
               <a
                 href='/new'

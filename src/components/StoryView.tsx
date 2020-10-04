@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { dateTimeString, getDomain, timeOffset } from '../utils'
 import { StorySkeleton } from '../components'
 import { useContext, useEffect } from 'react'
-import { StoryContext } from '../pages/_app'
+import { SearchContext, StoryContext } from '../pages/_app'
 import { ListBoxOption } from './ListBox'
 import {
   ALL_TIME,
@@ -43,6 +43,7 @@ export default function StoryView({
   )
 
   const { setSelectedStoryId, setIsPanelOpen } = useContext(StoryContext)
+  const { query } = useContext(SearchContext)
 
   useEffect(() => {
     if (isLoading || error) {
@@ -79,6 +80,18 @@ export default function StoryView({
     setIsPanelOpen(true)
   }
 
+  const isVisible = () => {
+    if (isLoading || error) {
+      return true
+    }
+    return (
+      story.title?.toLowerCase().includes(query.toLowerCase()) ||
+      story.text?.toLowerCase().includes(query.toLowerCase()) ||
+      story.by?.toLowerCase().includes(query.toLowerCase()) ||
+      story.url?.toLowerCase().includes(query.toLowerCase())
+    )
+  }
+
   const shouldShow = () => {
     if (isLoading || error) {
       return true
@@ -111,7 +124,7 @@ export default function StoryView({
     }
   }
 
-  if (!shouldShow()) {
+  if (!shouldShow() || !isVisible()) {
     return <></>
   }
 
