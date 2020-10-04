@@ -174,7 +174,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
                 className='inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange active:bg-orange-700 transition ease-in-out duration-150'
                 onClick={() => setTotalStories(totalStories + STORIES_OFFSET)}
               >
-                Show More
+                Load More
               </button>
             </span>
           </>
