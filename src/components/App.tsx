@@ -24,28 +24,28 @@ export default function App({ children }: { children: ReactNode }) {
       </Head>
       <div className='min-h-screen bg-white'>
         <nav className='bg-white border-b border-gray-200'>
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+          <div className='px-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
             <div className='flex justify-between h-16'>
               <div className='flex'>
-                <div className='flex-shrink-0 flex items-center'>
+                <div className='flex items-center flex-shrink-0'>
                   <a
                     href='/'
                     className='cursor-pointer'
                     // onClick={() => router.push('/')}
                   >
                     <img
-                      className='block lg:hidden h-8 w-auto'
+                      className='block w-auto h-8 lg:hidden'
                       src='data:image/png;base64,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'
                       alt='Y Combinator logo'
                     />
                     <img
-                      className='hidden lg:block h-8 w-auto'
+                      className='hidden w-auto h-8 lg:block'
                       src='https://camo.githubusercontent.com/0e9f2aa88bff2fb34cc62acf017292ea6a4ac777/68747470733a2f2f636c6f756475702e636f6d2f634c534e5a58576d30706d2b'
                       alt='Y Combinator logo'
                     />
                   </a>
                 </div>
-                <div className='hidden sm:-my-px sm:ml-6 space-x-8 sm:flex'>
+                <div className='hidden space-x-8 sm:-my-px sm:ml-6 sm:flex'>
                   <a
                     href='/new'
                     className={classNames(
@@ -119,15 +119,15 @@ export default function App({ children }: { children: ReactNode }) {
                   </a>
                 </div>
               </div>
-              <div className='flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end'>
-                <div className='max-w-lg w-full lg:max-w-xs'>
+              <div className='flex items-center justify-center flex-1 px-2 lg:ml-6 lg:justify-end'>
+                <div className='w-full max-w-lg lg:max-w-xs'>
                   <label htmlFor='search' className='sr-only'>
                     Search
                   </label>
                   <div className='relative'>
-                    <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+                    <div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none'>
                       <svg
-                        className='h-5 w-5 text-gray-400'
+                        className='w-5 h-5 text-gray-400'
                         fill='currentColor'
                         viewBox='0 0 20 20'
                       >
@@ -140,7 +140,7 @@ export default function App({ children }: { children: ReactNode }) {
                     </div>
                     <input
                       id='search'
-                      className='block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-orange-300 focus:shadow-outline-orange sm:text-sm transition duration-150 ease-in-out'
+                      className='block w-full py-2 pl-10 pr-3 leading-5 placeholder-gray-500 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md focus:outline-none focus:placeholder-gray-400 focus:border-orange-300 focus:shadow-outline-orange sm:text-sm'
                       placeholder='Search'
                       type='search'
                       value={query}
@@ -149,9 +149,9 @@ export default function App({ children }: { children: ReactNode }) {
                   </div>
                 </div>
               </div>
-              <div className='-mr-2 flex items-center sm:hidden'>
+              <div className='flex items-center -mr-2 sm:hidden'>
                 <button
-                  className='inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out'
+                  className='inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500'
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   <svg
@@ -278,14 +278,14 @@ export default function App({ children }: { children: ReactNode }) {
         </nav>
         <div className='py-10'>
           <header>
-            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+            <div className='px-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
               <h1 className='text-3xl font-bold leading-tight text-gray-900'>
                 {toTitleCase(path || 'Top')} Stories
               </h1>
             </div>
           </header>
           <main>
-            <div className='max-w-7xl mx-auto sm:px-6 lg:px-8'>
+            <div className='mx-auto max-w-7xl sm:px-6 lg:px-8'>
               <div className='px-4 pb-8 sm:px-0'>
                 <div className='rounded-lg h-96'>{children}</div>
               </div>

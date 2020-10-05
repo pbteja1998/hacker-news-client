@@ -21,7 +21,7 @@ export default function ListBox({
   return (
     <Listbox value={selectedOption} onChange={setSelectedOption}>
       <div className='space-y-1'>
-        <Listbox.Label className='block text-sm leading-5 font-medium text-gray-700'>
+        <Listbox.Label className='block text-sm font-medium leading-5 text-gray-700'>
           {label}
         </Listbox.Label>
         <div className='relative'>
@@ -32,7 +32,7 @@ export default function ListBox({
                 aria-haspopup='listbox'
                 aria-expanded='true'
                 aria-labelledby='listbox-label'
-                className='cursor-default relative w-full rounded-md border border-gray-300 bg-white pl-3 pr-10 py-2 text-left focus:outline-none focus:shadow-outline-orange focus:border-orange-300 transition ease-in-out duration-150 sm:text-sm sm:leading-5'
+                className='relative w-full py-2 pl-3 pr-10 text-left transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md cursor-default focus:outline-none focus:shadow-outline-orange focus:border-orange-300 sm:text-sm sm:leading-5'
               >
                 <span className='block truncate'>
                   {
@@ -44,7 +44,7 @@ export default function ListBox({
                 </span>
                 <span className='absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none'>
                   <svg
-                    className='h-5 w-5 text-gray-400'
+                    className='w-5 h-5 text-gray-400'
                     viewBox='0 0 20 20'
                     fill='none'
                     stroke='currentColor'
@@ -60,8 +60,8 @@ export default function ListBox({
               </button>
             </span>
           </Listbox.Button>
-          <div className='absolute mt-1 w-full rounded-md bg-white shadow-lg'>
-            <Listbox.Options className='max-h-60 rounded-md py-1 text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5'>
+          <div className='absolute w-full mt-1 bg-white rounded-md shadow-lg'>
+            <Listbox.Options className='py-1 overflow-auto text-base leading-6 rounded-md shadow-xs max-h-60 focus:outline-none sm:text-sm sm:leading-5'>
               {options.map((option: ListBoxOption) => (
                 <Listbox.Option as={Fragment} value={option} key={option.value}>
                   {({ active, selected }) => (
@@ -89,7 +89,7 @@ export default function ListBox({
                           )}
                         >
                           <svg
-                            className='h-5 w-5'
+                            className='w-5 h-5'
                             xmlns='http://www.w3.org/2000/svg'
                             viewBox='0 0 20 20'
                             fill='currentColor'

@@ -36,7 +36,7 @@ export default function Ring({
       style={{ width: size, height: size, ...style }}
     >
       {progress !== undefined && progress < 100 && (
-        <p className='font-semibold relative text-2xl top-3/4 left-1/3'>
+        <p className='relative text-2xl font-semibold top-3/4 left-1/3'>
           {`${progress < 10 ? '0' : ''}${progress}`}
         </p>
       )}

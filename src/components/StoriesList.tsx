@@ -106,7 +106,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
 
   return (
     <>
-      <div className='mt-6 grid gap-16 py-10 lg:grid-cols-1 lg:gap-x-5 lg:gap-y-12'>
+      <div className='grid gap-16 py-10 mt-6 lg:grid-cols-1 lg:gap-x-5 lg:gap-y-12'>
         {isLoading ? (
           <>
             <StorySkeleton />
@@ -131,7 +131,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
                 />
               ) : (
                 <div className='flex flex-wrap space-x-4'>
-                  <div className='hidden sm:block w-40'>
+                  <div className='hidden w-40 sm:block'>
                     <ListBox
                       label='Order In'
                       selectedOption={currentlyOrderIn}
@@ -171,7 +171,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
             <span className='text-center rounded-md'>
               <button
                 type='button'
-                className='inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange active:bg-orange-700 transition ease-in-out duration-150'
+                className='inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-orange-600 border border-transparent rounded-md hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange active:bg-orange-700'
                 onClick={() => setTotalStories(totalStories + STORIES_OFFSET)}
               >
                 Load More

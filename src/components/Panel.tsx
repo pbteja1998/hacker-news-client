@@ -36,9 +36,9 @@ export default function Panel() {
 
   return (
     <>
-      <div className='fixed right-0 top-0 bottom-0 w-full sm:w-2/3 md:w-7/12 overflow-hidden'>
+      <div className='fixed top-0 bottom-0 right-0 w-full overflow-hidden sm:w-2/3 md:w-7/12'>
         <div className='absolute inset-0 overflow-hidden'>
-          <section className='absolute inset-y-0 right-0 pl-2 max-w-full flex'>
+          <section className='absolute inset-y-0 right-0 flex max-w-full pl-2'>
             {isOpen && (
               <Transition
                 show={isOpen}
@@ -50,19 +50,19 @@ export default function Panel() {
                 leaveTo='translate-x-full'
                 className='w-screen'
               >
-                <div className='h-full flex flex-col space-y-6 py-6 bg-white shadow-xl overflow-y-scroll'>
+                <div className='flex flex-col h-full py-6 space-y-6 overflow-y-scroll bg-white shadow-xl'>
                   <header className='px-4 sm:px-6'>
                     <div className='flex items-start justify-between space-x-3'>
                       <StoryView storyId={story.id} showCompleteStory={true} />
-                      <div className='h-7 flex items-center'>
+                      <div className='flex items-center h-7'>
                         <button
                           onClick={() => setIsOpen(false)}
                           aria-label='Close panel'
-                          className='text-gray-400 hover:text-gray-500 transition ease-in-out duration-150'
+                          className='text-gray-400 transition duration-150 ease-in-out hover:text-gray-500'
                         >
                           {/* <!-- Heroicon name: x --> */}
                           <svg
-                            className='h-6 w-6'
+                            className='w-6 h-6'
                             fill='none'
                             viewBox='0 0 24 24'
                             stroke='currentColor'
@@ -81,7 +81,7 @@ export default function Panel() {
                   <div className='relative flex-1 px-4 sm:px-6'>
                     {/* <!-- Replace with your content --> */}
                     <div className='absolute inset-0 px-4 sm:px-6'>
-                      <div className='h-full border-2 border-dashed border-transparent'>
+                      <div className='h-full border-2 border-transparent border-dashed'>
                         <div className='mt-4'>
                           {story.kids?.map((subCommentId: number) => (
                             <CommentView

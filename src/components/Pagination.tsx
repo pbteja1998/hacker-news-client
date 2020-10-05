@@ -53,7 +53,7 @@ export default function Pagination({
         className={`sticky top-0 bg-white border-b border-gray-200 px-4
           flex items-center justify-between sm:px-0`}
       >
-        <div className='w-0 flex-1 flex'>
+        <div className='flex flex-1 w-0'>
           <button
             className={classNames(
               `-mt-px border-b-2 border-transparent pt-4 pb-2 px-3 inline-flex 
@@ -65,7 +65,7 @@ export default function Pagination({
             onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
           >
             <svg
-              className='mr-3 h-5 w-5 text-gray-400'
+              className='w-5 h-5 mr-3 text-gray-400'
               viewBox='0 0 20 20'
               fill='currentColor'
             >
@@ -108,9 +108,9 @@ export default function Pagination({
             />
           )}
 
-          <div className='mt-1 mx-2 relative shadow-sm' key={'input'}>
+          <div className='relative mx-2 mt-1 shadow-sm' key={'input'}>
             <input
-              className='form-input rounded-sm block w-12 mt-3 sm:text-sm sm:leading-5 text-orange-600 focus:text-orange-800'
+              className='block w-12 mt-3 text-orange-600 rounded-sm form-input sm:text-sm sm:leading-5 focus:text-orange-800'
               placeholder='25'
               value={input}
               onChange={(e) => {
@@ -157,7 +157,7 @@ export default function Pagination({
             isSelected={currentPage === pagesCount - 1}
           />
         </div>
-        <div className='w-0 flex-1 flex justify-end'>
+        <div className='flex justify-end flex-1 w-0'>
           <button
             className={classNames(
               `-mt-px border-b-2 border-transparent pt-4 pb-2 px-3 inline-flex 
@@ -174,7 +174,7 @@ export default function Pagination({
           >
             Next
             <svg
-              className='ml-3 h-5 w-5 text-gray-400'
+              className='w-5 h-5 ml-3 text-gray-400'
               viewBox='0 0 20 20'
               fill='currentColor'
             >

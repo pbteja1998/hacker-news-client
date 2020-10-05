@@ -153,7 +153,7 @@ export default function StoryView({
           </Link>
         </div>
         <a className='block cursor-pointer' onClick={() => openStory()}>
-          <h3 className='mt-4 text-xl leading-7 font-semibold text-gray-900'>
+          <h3 className='mt-4 text-xl font-semibold leading-7 text-gray-900'>
             {story.title}
           </h3>
           <article
@@ -167,7 +167,7 @@ export default function StoryView({
             }}
           />
         </a>
-        <div className='mt-1 flex items-center'>
+        <div className='flex items-center mt-1'>
           <div>
             <div className='flex text-sm leading-5 text-gray-500'>
               {storyType == StoryType.SHOW && (
@@ -188,7 +188,7 @@ export default function StoryView({
                 href={`https://news.ycombinator.com/user?id=${story.by}`}
                 target='_blank'
                 rel='noopener noreferrer nofollow'
-                className='text-sm leading-5 font-medium text-gray-700 flex items-center cursor-pointer'
+                className='flex items-center text-sm font-medium leading-5 text-gray-700 cursor-pointer'
               >
                 <svg
                   className='w-4 h-4'
@@ -202,7 +202,7 @@ export default function StoryView({
                     clipRule='evenodd'
                   />
                 </svg>
-                <p className='hover:underline ml-1'>{story.by}</p>
+                <p className='ml-1 hover:underline'>{story.by}</p>
               </a>
               <span className='mx-1'>&middot;</span>
               <time dateTime={dateTimeString(story.time)}>
@@ -231,7 +231,7 @@ export default function StoryView({
                   d='M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z'
                 />
               </svg>
-              <a className='text-sm ml-1'>
+              <a className='ml-1 text-sm'>
                 {(story as Story).descendants ?? 0} Comments
               </a>
             </div>
@@ -258,7 +258,7 @@ export default function StoryView({
                 d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
               />
             </svg>
-            <a className='text-sm ml-1'>{story.score ?? 0} Likes</a>
+            <a className='ml-1 text-sm'>{story.score ?? 0} Likes</a>
           </div>
         </div>
       </div>

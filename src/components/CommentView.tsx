@@ -11,13 +11,13 @@ export default function CommentView({ commentId }: { commentId: number }) {
 
   if (isLoading) {
     return (
-      <div className='border border-gray-300 shadow rounded-md p-4 max-w-sm w-full my-10'>
-        <div className='animate-pulse flex space-x-4'>
-          <div className='flex-1 space-y-4 py-1'>
-            <div className='h-4 bg-gray-400 rounded w-3/4'></div>
+      <div className='w-full max-w-sm p-4 my-10 border border-gray-300 rounded-md shadow'>
+        <div className='flex space-x-4 animate-pulse'>
+          <div className='flex-1 py-1 space-y-4'>
+            <div className='w-3/4 h-4 bg-gray-400 rounded'></div>
             <div className='space-y-2'>
               <div className='h-4 bg-gray-400 rounded'></div>
-              <div className='h-4 bg-gray-400 rounded w-5/6'></div>
+              <div className='w-5/6 h-4 bg-gray-400 rounded'></div>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@ export default function CommentView({ commentId }: { commentId: number }) {
 
   return (
     <div className='mt-5'>
-      <div className='border-l border-b rounded-b rounded-l border-gray-200 pl-4 pb-4'>
+      <div className='pb-4 pl-4 border-b border-l border-gray-200 rounded-b rounded-l'>
         <article
           className='prose'
           dangerouslySetInnerHTML={{
@@ -41,14 +41,14 @@ export default function CommentView({ commentId }: { commentId: number }) {
           }}
         />
 
-        <div className='mt-1 flex items-center'>
+        <div className='flex items-center mt-1'>
           <div>
             <div className='flex text-sm leading-5 text-gray-500'>
               <time dateTime={dateTimeString(comment.time)}>
                 {timeOffset(comment.time)}
               </time>
               <span className='mx-1'>&middot;</span>
-              <p className='text-sm leading-5 font-medium text-gray-700'>
+              <p className='text-sm font-medium leading-5 text-gray-700'>
                 <a href='#'>{comment.by}</a>
               </p>
             </div>
