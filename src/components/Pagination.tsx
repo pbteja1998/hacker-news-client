@@ -79,83 +79,98 @@ export default function Pagination({
           </button>
         </div>
         <div className='hidden md:flex'>
-          <PageNumber
-            key={'page-0'}
-            page={0}
-            setPage={() => setCurrentPage(0)}
-            isSelected={currentPage === 0}
-          />
-          <PageNumber
-            key={'page-1'}
-            page={1}
-            setPage={() => setCurrentPage(1)}
-            isSelected={currentPage === 1}
-          />
-          <PageNumber
-            key={'page-2'}
-            page={2}
-            setPage={() => setCurrentPage(2)}
-            isSelected={currentPage === 2}
-          />
-
-          {leftMiddlePage() > 2 && leftMiddlePage() < currentPage && (
-            <PageNumber
-              isPlaceHolder={true}
-              key={'left-middle-page'}
-              page={leftMiddlePage()}
-              setPage={() => setCurrentPage(leftMiddlePage())}
-              isSelected={false}
-            />
-          )}
-
-          <div className='relative mx-2 mt-1 shadow-sm' key={'input'}>
-            <input
-              className='block w-12 mt-3 text-orange-600 rounded-sm form-input sm:text-sm sm:leading-5 focus:text-orange-800'
-              placeholder='25'
-              value={input}
-              onChange={(e) => {
-                if (!isNaN(+e.target.value)) {
-                  setInput(+e.target.value)
-                }
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  setCurrentPage(input - 1)
-                }
-              }}
-              onBlur={() => setCurrentPage(input - 1)}
-            />
-          </div>
-
-          {rightMiddlePage() > currentPage &&
-            rightMiddlePage() < pagesCount - 3 && (
+          {pagesCount < 6 ? (
+            <>
+              {Array.from(Array(pagesCount).keys()).map((page: number) => (
+                <PageNumber
+                  key={`page-${page}`}
+                  page={page}
+                  setPage={() => setCurrentPage(page)}
+                  isSelected={currentPage === page}
+                />
+              ))}
+            </>
+          ) : (
+            <>
               <PageNumber
-                isPlaceHolder={true}
-                key={'right-middle-page'}
-                page={rightMiddlePage()}
-                setPage={() => setCurrentPage(rightMiddlePage())}
-                isSelected={false}
+                key={'page-0'}
+                page={0}
+                setPage={() => setCurrentPage(0)}
+                isSelected={currentPage === 0}
               />
-            )}
+              <PageNumber
+                key={'page-1'}
+                page={1}
+                setPage={() => setCurrentPage(1)}
+                isSelected={currentPage === 1}
+              />
+              <PageNumber
+                key={'page-2'}
+                page={2}
+                setPage={() => setCurrentPage(2)}
+                isSelected={currentPage === 2}
+              />
 
-          <PageNumber
-            key={`page - ${pagesCount - 3}`}
-            page={pagesCount - 3}
-            setPage={() => setCurrentPage(pagesCount - 3)}
-            isSelected={currentPage === pagesCount - 3}
-          />
-          <PageNumber
-            key={`page - ${pagesCount - 2}`}
-            page={pagesCount - 2}
-            setPage={() => setCurrentPage(pagesCount - 2)}
-            isSelected={currentPage === pagesCount - 2}
-          />
-          <PageNumber
-            key={`page - ${pagesCount - 1}`}
-            page={pagesCount - 1}
-            setPage={() => setCurrentPage(pagesCount - 1)}
-            isSelected={currentPage === pagesCount - 1}
-          />
+              {leftMiddlePage() > 2 && leftMiddlePage() < currentPage && (
+                <PageNumber
+                  isPlaceHolder={true}
+                  key={'left-middle-page'}
+                  page={leftMiddlePage()}
+                  setPage={() => setCurrentPage(leftMiddlePage())}
+                  isSelected={false}
+                />
+              )}
+
+              <div className='relative mx-2 mt-1 shadow-sm' key={'input'}>
+                <input
+                  className='block w-12 mt-3 text-orange-600 rounded-sm form-input sm:text-sm sm:leading-5 focus:text-orange-800'
+                  placeholder='25'
+                  value={input}
+                  onChange={(e) => {
+                    if (!isNaN(+e.target.value)) {
+                      setInput(+e.target.value)
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      setCurrentPage(input - 1)
+                    }
+                  }}
+                  onBlur={() => setCurrentPage(input - 1)}
+                />
+              </div>
+
+              {rightMiddlePage() > currentPage &&
+                rightMiddlePage() < pagesCount - 3 && (
+                  <PageNumber
+                    isPlaceHolder={true}
+                    key={'right-middle-page'}
+                    page={rightMiddlePage()}
+                    setPage={() => setCurrentPage(rightMiddlePage())}
+                    isSelected={false}
+                  />
+                )}
+
+              <PageNumber
+                key={`page - ${pagesCount - 3}`}
+                page={pagesCount - 3}
+                setPage={() => setCurrentPage(pagesCount - 3)}
+                isSelected={currentPage === pagesCount - 3}
+              />
+              <PageNumber
+                key={`page - ${pagesCount - 2}`}
+                page={pagesCount - 2}
+                setPage={() => setCurrentPage(pagesCount - 2)}
+                isSelected={currentPage === pagesCount - 2}
+              />
+              <PageNumber
+                key={`page - ${pagesCount - 1}`}
+                page={pagesCount - 1}
+                setPage={() => setCurrentPage(pagesCount - 1)}
+                isSelected={currentPage === pagesCount - 1}
+              />
+            </>
+          )}
         </div>
         <div className='flex justify-end flex-1 w-0'>
           <button
