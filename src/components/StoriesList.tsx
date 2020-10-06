@@ -131,7 +131,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
                 />
               ) : (
                 <div className='flex flex-wrap space-x-4'>
-                  <div className='hidden w-40 sm:block'>
+                  <div className='hidden w-40 md:block'>
                     <ListBox
                       label='Order In'
                       selectedOption={currentlyOrderIn}
