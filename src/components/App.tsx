@@ -302,7 +302,6 @@ export default function App({ children }: { children: ReactNode }) {
               href='https://blog.bhanuteja.dev'
               className='relative text-gray-400 hover:text-gray-500'
               target='_blank'
-              rel='noopener noreferrer nofollow'
               style={{ bottom: '0.19rem' }}
             >
               <span className='sr-only'>Bhanu Teja Pachipulusu's Blog</span>
@@ -315,7 +314,6 @@ export default function App({ children }: { children: ReactNode }) {
               href='https://bhanuteja.dev'
               className='text-gray-400 hover:text-gray-500'
               target='_blank'
-              rel='noopener noreferrer nofollow'
             >
               <span className='sr-only'>
                 Bhanu Teja Pachipulusu's Personal Website
