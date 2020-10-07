@@ -168,7 +168,7 @@ export default function StoriesList({ urlKey }: { urlKey: string }) {
               />
             ))}
 
-            <span className='text-center rounded-md'>
+            <span className='text-center rounded-md mb-28 sm:mb-20'>
               <button
                 type='button'
                 className='inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-orange-600 border border-transparent rounded-md hover:bg-orange-500 focus:outline-none focus:border-orange-700 focus:shadow-outline-orange active:bg-orange-700'

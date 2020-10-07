@@ -13,6 +13,10 @@ module.exports = {
   },
   theme: {
     extend: {
+      opacity: {
+        // prettier-ignore
+        '30': '0.3',
+      },
       customForms: (theme) => {
         return {
           default: {

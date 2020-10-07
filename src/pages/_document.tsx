@@ -42,10 +42,6 @@ class MyDocument extends Document {
           <meta property='twitter:url' content='https://hn.bhanuteja.dev' />
           <meta property='og:image' content='/preview.png' />
           <meta property='twitter:image' content='/preview.png' />
-          <meta
-            name='viewport'
-            content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover'
-          />
           <link rel='shortcut icon' href='/favicon.ico' />
           <script
             src='https://cdn.usefathom.com/script.js'
