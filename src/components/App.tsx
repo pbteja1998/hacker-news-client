@@ -397,7 +397,7 @@ export default function App({ children }: { children: ReactNode }) {
             >
               <span className='sr-only'>LinkedIn</span>
               <svg
-                className='w-4 h-4'
+                style={{ width: '1.2rem' }}
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 24 24'
                 fill='currentColor'
