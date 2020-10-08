@@ -145,7 +145,7 @@ export default function StoryView({
               <span className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-orange-100 text-orange-800'>
                 {storyType === StoryType.JOB
                   ? 'Jobs HN'
-                  : StoryType.SHOW
+                  : storyType === StoryType.SHOW
                   ? 'Show HN'
                   : 'Ask HN'}
               </span>
