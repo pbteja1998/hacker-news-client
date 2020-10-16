@@ -18,7 +18,7 @@ class MyDocument extends Document {
         <Head>
           <meta charSet='utf-8' />
           <meta name='application-name' content='Hacker News' />
-          <meta name='twitter:card' content='summary' />
+          <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:creator' content='@pbteja1998' />
           <meta property='og:type' content='website' />
           <meta name='author' content='Bhanu Teja P' />
@@ -40,8 +40,14 @@ class MyDocument extends Document {
             content='A Hacker News client to view stories from news.ycombinator.com.'
           />
           <meta property='twitter:url' content='https://hn.bhanuteja.dev' />
-          <meta property='og:image' content='https://hn.bhanuteja.dev/preview.png' />
-          <meta property='twitter:image' content='https://hn.bhanuteja.dev/preview.png' />
+          <meta
+            property='og:image'
+            content='https://hn.bhanuteja.dev/preview.png'
+          />
+          <meta
+            property='twitter:image'
+            content='https://hn.bhanuteja.dev/preview.png'
+          />
           <link rel='shortcut icon' href='/favicon.ico' />
           <script
             src='https://cdn.usefathom.com/script.js'
