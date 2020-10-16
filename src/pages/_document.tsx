@@ -40,8 +40,8 @@ class MyDocument extends Document {
             content='A Hacker News client to view stories from news.ycombinator.com.'
           />
           <meta property='twitter:url' content='https://hn.bhanuteja.dev' />
-          <meta property='og:image' content='/preview.png' />
-          <meta property='twitter:image' content='/preview.png' />
+          <meta property='og:image' content='https://hn.bhanuteja.dev/preview.png' />
+          <meta property='twitter:image' content='https://hn.bhanuteja.dev/preview.png' />
           <link rel='shortcut icon' href='/favicon.ico' />
           <script
             src='https://cdn.usefathom.com/script.js'
