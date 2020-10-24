@@ -55,6 +55,12 @@ class MyDocument extends Document {
             site='BBOGJGAJ'
             defer
           />
+          <script
+            async
+            defer
+            data-domain='hn.bhanuteja.dev'
+            src='https://plausible.io/js/plausible.js'
+          ></script>
         </Head>
         <body>
           <Main />
