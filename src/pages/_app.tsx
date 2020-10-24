@@ -3,7 +3,8 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { App } from '../components'
 import { QueryCache, ReactQueryCacheProvider } from 'react-query'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
+import { hotjar } from 'react-hotjar'
 
 const queryCache = new QueryCache()
 
@@ -28,6 +29,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [selectedStoryId, setSelectedStoryId] = useState(0)
   const [isPanelOpen, setIsPanelOpen] = useState(false)
   const [query, setQuery] = useState('')
+
+  useEffect(() => {
+    hotjar.initialize(2058541, 6)
+  }, [])
 
   return (
     <ReactQueryCacheProvider queryCache={queryCache}>
